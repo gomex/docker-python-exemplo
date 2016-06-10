@@ -1,0 +1,16 @@
+web:
+  build: .
+  ports:
+    - "5000:5000"
+  volumes:
+    - .:/code
+  links:
+    - redis
+  environment:
+    - PORT_REDIS=6379
+    - HOST_REDIS=redis
+
+redis:
+  image: redis
+  volumes:
+    - dados_redis:/data
